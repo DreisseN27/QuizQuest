@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #f4d7c8, #e8bfe5, #c998e5);
+    background-attachment: fixed;
+}
+
+.login-card {
+    display: flex;
+    width: 800px;
+    margin: 0px auto;
+    border: 4px solid black;    /* thicker border */
+    border-radius: 20px;
+    overflow: hidden;
+    height: 500px;
+}   
+
+.left-side h1 {
+    margin-bottom: 20px;
+}
+
+.left-side > p {
+    font-weight: bold;
+    text-align: left;        /* text stays left aligned */
+    margin: 0 auto;          /* centers the whole block */
+    width: fit-content;      /* makes the block only as wide as text */
+    font-size: 16px;
+}
+
+.left-side {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffb6e9;
+}
+
+.right-side {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 4px solid black;
+    background-color: white;;
+}
+
+.bottom-info {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 130px;
+}
+
+.side-line {
+    width: 3px;            
+    height: 80px;          
+    background-color: black;
+    margin-right: 15px;    
+}
+
+.bottom-info p {
+    max-width: 320px;      
+    line-height: 1.6;
+    font-weight: bold;
+    text-align: left;        /* text stays left aligned */
+    margin: 0 auto;          /* centers the whole block */
+    width: fit-content;      /* makes the block only as wide as text */
+    font-size: 16px;
+}
+
+.login-buttons {
+    margin-top: 80px;  /* adjust this number to move buttons up/down */
+    display: flex;
+    gap: 110px;          /* space between Login and Cancel buttons */
+}
+
+.login-buttons button {
+    padding: 5px 20px;         /* button size */
+    border: none;
+    background-color: #ea96f1;  /* Login button color */
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    border: 2px solid black;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.input-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.input-row label {
+    width: 100px;   /* adjust label width */
+    font-weight: bold;
+}
+
+.input-row input {
+    width: 200px;   /* ADJUST TEXTFIELD WIDTH HERE */
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+.no-account {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+
+.no-account a {
+    text-decoration: none;
+    color: gray;
+    font-weight: bold;
+}
+
+.no-account a:hover {
+    text-decoration: underline;
+    color: #ea96f1;
+}
+
+.top-header {
+    width: 100%;
+    background-color: #f4d7c8; /* light peach like the reference */
+    border-bottom: 3px solid #e0b6a6; /* the line separating header & body */
+    padding: 10px 30px; /* spacing around the logo */
+    box-sizing: border-box;
+}
+
+.header {
+    width: 100%; 
+    padding-left: 10px;/* space around the logo */
+    background-color: #f4d7c8; /* same top color as gradient start */
+    border-bottom: 2px solid #d7b8a8; /* thin separating line */
+}
+
+/* LOGO — NO BORDER, CLEAN */
+.logo-container img {
+    display: block;    /* removes small bottom gap */
+    width: 150px;      /* 🔧 adjust logo width */
+    height: auto;      /* keeps proportions */
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title img {
+    width: 245px;   /* 🔧 adjust this to make it bigger or smaller */
+    height: auto;
+    display: block;
+}
+
+.error-wrapper {
+    height: 40px; /* reserve space so layout doesn’t move */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-box {
+    background-color: #ffb3b3;
+    border: 2px solid red;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    width: 50%;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.error-shake {
+    animation: shake 0.3s;
+}

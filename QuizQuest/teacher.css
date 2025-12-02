@@ -1,0 +1,172 @@
+body {
+    margin: 0;
+    padding: 0; /* removed padding-top so no extra gap below navbar */
+    background: linear-gradient(to bottom, #f4d7c8, #e8bfe5, #c998e5);
+    background-attachment: fixed;
+}
+
+.header {
+    width: 100%;
+    margin: 0;
+    padding-top: 35px;             /* no extra space above header */
+    padding-left: 10px;         /* space around the logo */
+    background-color: #f4d7c8;  /* same top color as gradient start */
+    border-bottom: 2px solid #d7b8a8; /* thin separating line */
+}
+
+/* optional: tighten the main area so it sits right under header */
+main.container {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.input-row label {
+    width: 100px;   /* adjust label width */
+    font-weight: bold;
+}
+
+.input-row input {
+    width: 200px;   /* ADJUST TEXTFIELD WIDTH HERE */
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+.no-account {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+
+.no-account a {
+    text-decoration: none;
+    color: gray;
+    font-weight: bold;
+}
+
+.no-account a:hover {
+    text-decoration: underline;
+    color: #ea96f1;
+}
+
+.top-header {
+    width: 100%;
+    background-color: #f4d7c8;       /* light peach like the reference */
+    border-bottom: 3px solid #e0b6a6;/* line separating header & body */
+    padding: 10px 30px;              /* spacing around the logo */
+    box-sizing: border-box;
+}
+
+/* LOGO — NO BORDER, CLEAN */
+.logo-container img {
+    display: block;    /* removes small bottom gap */
+    width: 150px;      /* 🔧 adjust logo width */
+    height: auto;      /* keeps proportions */
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title img {
+    width: 245px;   /* 🔧 adjust this to make it bigger or smaller */
+    height: auto;
+    display: block;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(-5px); }
+    40% { transform: translateX(5px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.my-navbar {
+  background-color: #9735c8 !important;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.nav-pills-small .nav-link {
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.my-navbar .nav-link {
+  color: #ffffff !important;
+}
+
+.my-navbar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Subject cards similar to Google Classroom feel */
+.subject-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    background: linear-gradient(135deg, #4f46e5, #3b82f6);
+    color: #fff;
+    position: relative;
+}
+
+.subject-card .card-body {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+}
+
+/* Make inner text (like quiz list) white-ish but readable */
+.subject-card .card-title,
+.subject-card small,
+.subject-card .card-text {
+    color: #fff;
+}
+
+.subject-card .list-group-item {
+    background: transparent;
+    border: 0;
+    color: #f9fafb;
+}
+
+.subject-card .list-group-item .btn-outline-primary {
+    border-color: #fff;
+    color: #fff;
+}
+
+.subject-card .list-group-item .btn-outline-primary:hover {
+    background-color: #fff;
+    color: #1d4ed8;
+}
+
+.subject-card .badge.bg-primary {
+    background-color: rgba(15, 118, 110, 0.9);
+}
+
+/* Adjust “View all” button */
+.subject-card .btn-outline-secondary {
+    border-color: #e5e7eb;
+    color: #e5e7eb;
+}
+
+.subject-card .btn-outline-secondary:hover {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.subject-card small.text-muted {
+    color: #e5e7eb !important;
+}

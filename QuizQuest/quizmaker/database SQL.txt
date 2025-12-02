@@ -1,0 +1,95 @@
+-- ==============================
+-- QuizMaker Database Schema
+-- ==============================
+
+-- Drop tables if they exist (to reset the database)
+DROP TABLE IF EXISTS password_resets;
+DROP TABLE IF EXISTS student_quizzes;
+DROP TABLE IF EXISTS choices;
+DROP TABLE IF EXISTS questions;
+DROP TABLE IF EXISTS quizzes;
+DROP TABLE IF EXISTS subjects;
+DROP TABLE IF EXISTS users;
+
+-- ==============================
+-- Users Table
+-- ==============================
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('teacher','student') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ==============================
+-- Subjects Table
+-- ==============================
+CREATE TABLE subjects (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    description TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- ==============================
+-- Quizzes Table
+-- ==============================
+CREATE TABLE quizzes (
+    quiz_code VARCHAR(20) PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    teacher_id INT NOT NULL,
+    subject_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (teacher_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
+);
+
+-- ==============================
+-- Questions Table
+-- ==============================
+CREATE TABLE questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    quiz_code VARCHAR(20) NOT NULL,
+    question_text TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (quiz_code) REFERENCES quizzes(quiz_code) ON DELETE CASCADE
+);
+
+-- ==============================
+-- Choices Table
+-- ==============================
+CREATE TABLE choices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_id INT NOT NULL,
+    choice_text VARCHAR(255) NOT NULL,
+    is_correct BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (question_id) REFERENCES questions(id) ON DELETE CASCADE
+);
+
+-- ==============================
+-- Student Quizzes Table
+-- ==============================
+CREATE TABLE student_quizzes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT NOT NULL,
+    quiz_code VARCHAR(20) NOT NULL,
+    score DECIMAL(5,2) NOT NULL DEFAULT 0,
+    taken_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (quiz_code) REFERENCES quizzes(quiz_code) ON DELETE CASCADE,
+    UNIQUE(student_id, quiz_code)
+);
+
+-- ==============================
+-- Password Resets Table
+-- ==============================
+CREATE TABLE password_resets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    token VARCHAR(255) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
