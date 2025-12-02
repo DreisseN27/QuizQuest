@@ -18,7 +18,7 @@ if (!$action) {
 // VIEW ALL QUIZZES
 // ----------------------
 if ($action === 'view') {
-    $stmt = $pdo->query("SELECT id, quiz_code, title FROM quizzes ORDER BY created_at DESC");
+    $stmt = $pdo->query("SELECT id, class_code, title FROM quizzes ORDER BY created_at DESC");
     $quizzes = $stmt->fetchAll();
     echo json_encode($quizzes);
     exit;
