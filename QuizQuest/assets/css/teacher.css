@@ -19,7 +19,7 @@ body {
 }
 
 .input-row input {
-    width: 200px;   /* ADJUST TEXTFIELD WIDTH HERE */
+    width: 200px;  
     padding: 8px;
     border-radius: 8px;
     border: 1px solid #aaa;
