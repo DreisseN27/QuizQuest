@@ -20,7 +20,7 @@
 
     <!-- LEFT SIDE WITH IMAGE -->
     <div class="left-panel">
-        <img src="assets/images/entry_page_image.png" class="left-image">
+        <img src="assets/images/entry_page.gif" class="left-image">
     </div>
 
     <!-- RIGHT SIDE (EMPTY FOR NOW) -->
