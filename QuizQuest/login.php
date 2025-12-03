@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
             if (password_verify($password, $user['password'])) {
                 // Store session
+                $_SESSION['user_id'] = $user['id']; 
                 $_SESSION['user'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
 
