@@ -75,32 +75,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
     <div class="login-card <?php if ($shake) echo 'error-shake'; ?>">
 
         <div class="left-side">
-
             <div class="patch-notes">
-
                 <h2> Patch Notes </h2>
-
                 <div class="patch-list">
-
                     <div class="patch-entry">
                         <h3>v1.0.3 – Nov 30, 2025</h3>
                         <p>• Improved login error animation.</p>
                         <p>• Updated spacing and layout adjustments.</p>
                     </div>
-
                     <div class="patch-entry">
                         <h3>v1.0.2 – Nov 28, 2025</h3>
                         <p>• Added new title image on login page.</p>
                         <p>• Updated UI colors.</p>
                     </div>
-
                     <div class="patch-entry">
                         <h3>v1.0.1 – Nov 25, 2025</h3>
                         <p>• Initial login screen layout created.</p>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="bottom-info">
@@ -128,11 +120,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
                 <input type="password" name="password" class="form-control form-control-sm mb-2" placeholder="Password" required>
 
                 <div class="register-footer">
-
                     <p class="no-account">
                         <a href="entry_page.php" class="btn-link">Don't have an account?</a>
                     </p>
-                    
                 </div>
 
                 <div class="error-wrapper">
