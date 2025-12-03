@@ -50,10 +50,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Render active class cards
 function renderClassCards($conn, $student_id) {
     $stmt = $conn->prepare("
-        SELECT sc.class_code, q.title
+        SELECT sc.class_code, q.title AS quiz_title, u.full_name AS teacher_name, s.section_name
         FROM student_classes sc
         JOIN quizzes q ON sc.class_code = q.class_code
+        JOIN users u ON q.teacher_id = u.id
+        LEFT JOIN student_sections ss ON ss.student_id = sc.student_id
+        LEFT JOIN sections s ON ss.section_id = s.id
         WHERE sc.student_id = ?
+        GROUP BY sc.class_code
         ORDER BY q.created_at DESC
     ");
     $stmt->bind_param("i", $student_id);
@@ -65,15 +69,16 @@ function renderClassCards($conn, $student_id) {
             echo '<div class="col-md-4 col-sm-6">';
             echo '<div class="card mb-3">';
             echo '<div class="card-body d-flex flex-column">';
-            echo '<h5 class="card-title">' . htmlspecialchars($row['title']) . '</h5>';
-            echo '<p class="card-text">Class Code: ' . htmlspecialchars($row['class_code']) . '</p>';
+            echo '<h6 class="text-muted mb-1">Teacher: ' . htmlspecialchars($row['teacher_name']) . '</h6>';
+            echo '<h5 class="card-title">' . htmlspecialchars($row['quiz_title']) . '</h5>';
+            echo '<p class="card-text mb-1">Section: ' . ($row['section_name'] ? htmlspecialchars($row['section_name'] . " (Grade " . $row['grade_level'] . ")") : 'Not set') . '</p>';
             echo '<div class="mt-auto d-flex justify-content-between">';
-            echo '<a href="class_quizzes.php?class_code=' . urlencode($row['class_code']) . '" class="btn btn-info btn-sm">View Quizzes</a>';
+            echo '<a href="student_class.php?class_code=' . urlencode($row['class_code']) . '" class="btn btn-info btn-sm">View Class</a>';
             echo '<form method="POST" style="margin:0;">';
             echo '<input type="hidden" name="remove_class_code" value="' . htmlspecialchars($row['class_code']) . '">';
             echo '<button type="submit" class="btn btn-danger btn-sm">Remove</button>';
             echo '</form>';
-            echo '</div>';
+            echo '</div>'; // mt-auto flex
             echo '</div></div></div>'; // card-body, card, col
         }
     } else {
@@ -83,11 +88,13 @@ function renderClassCards($conn, $student_id) {
 
 // Render completed quizzes
 function renderCompletedQuizzes($conn, $student_id) {
-    // Select distinct quizzes for this student
+    // Select distinct quizzes for this student along with class info and teacher
     $stmt = $conn->prepare("
-        SELECT sq.quiz_id, q.title, sq.score, sq.taken_at
+        SELECT sq.quiz_id, sq.score, sq.taken_at, q.title AS quiz_title, 
+               u.full_name AS teacher_name, q.class_code
         FROM student_quizzes sq
         JOIN quizzes q ON sq.quiz_id = q.id
+        JOIN users u ON q.teacher_id = u.id
         WHERE sq.student_id = ?
         GROUP BY sq.quiz_id
         ORDER BY sq.taken_at DESC
@@ -101,8 +108,10 @@ function renderCompletedQuizzes($conn, $student_id) {
             echo '<div class="col-md-4 col-sm-6">';
             echo '<div class="card mb-3">';
             echo '<div class="card-body">';
-            echo '<h5 class="card-title">' . htmlspecialchars($quiz['title']) . '</h5>';
-            echo '<p class="small text-muted mb-2">Score: ' . htmlspecialchars($quiz['score']) . '</p>';
+            echo '<h6 class="text-muted mb-1">Teacher: ' . htmlspecialchars($quiz['teacher_name']) . '</h6>';
+            echo '<h5 class="card-title">' . htmlspecialchars($quiz['quiz_title']) . '</h5>';
+            echo '<p class="small text-muted mb-1">Class Code: ' . htmlspecialchars($quiz['class_code']) . '</p>';
+            echo '<p class="small text-muted mb-1">Score: ' . htmlspecialchars($quiz['score']) . '</p>';
             echo '<p class="small text-muted">Taken on: ' . date('M d, Y H:i', strtotime($quiz['taken_at'])) . '</p>';
             echo '</div></div></div>';
         }
