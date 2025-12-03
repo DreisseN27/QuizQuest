@@ -27,15 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             $_SESSION["role"] = $user["role"]; // store role in session
 
             // ---------- Redirect based on role ----------
-            if ($user["role"] === "teacher") {
+            $role = strtolower($user["role"]);
+            if ($role === "teacher") {
                 header("Location: teacher.php");
                 exit;
-            } elseif ($user["role"] === "student") {
+            } elseif ($role === "student") {
                 header("Location: student.php");
                 exit;
-            } else {
-                $error = "Unknown role. Contact admin.";
-                $shake = true;
             }
             // ------------------------------------------
         } else {
