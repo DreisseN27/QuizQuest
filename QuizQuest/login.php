@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                 $error = "Unknown role. Contact admin.";
                 $shake = true;
             }
+            // ------------------------------------------
         } else {
             $error = "Incorrect password.";
             $shake = true;
@@ -52,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
     // nothing as requested
 }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
