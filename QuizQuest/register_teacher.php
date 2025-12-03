@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
 
                 <div class="register-footer">
                     <p class="footer-left">
-                        <a href="QuizQuest/login.php" class="small">Already have an account?</a>
+                        <a href="login.php" class="small">Already have an account?</a>
                     </p>
 
                     <div class="error-wrapper">
