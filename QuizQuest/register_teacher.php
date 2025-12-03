@@ -4,7 +4,7 @@ session_start();
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "login_system";
+$dbname = "quizmaker";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
@@ -70,14 +70,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
     <title>QuizQuest Register</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="assets/css/register_teacher.css">
+    <link rel="stylesheet" href="QuizQuest/assets/css/register_teacher.css">
 </head>
 
 <body>
 
 <header class="header">
     <div class="logo-container">
-        <img src="assets/images/logo.png" alt="QuizQuest Logo">
+        <img src="QuizQuest/assets/images/logo.png" alt="QuizQuest Logo">
     </div>
 </header>
 
@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         <div class="right-side">
 
             <div class="title">
-                <img src="assets/images/quizquest-title.png">
+                <img src="QuizQuest/assets/images/quizquest-title.png">
             </div>
             <p class="subheading">Where every quiz is an adventure!</p>
 
@@ -137,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
 
                 <div class="register-footer">
                     <p class="footer-left">
-                        <a href="login.php" class="small">Already have an account?</a>
+                        <a href="QuizQuest/login.php" class="small">Already have an account?</a>
                     </p>
 
                     <div class="error-wrapper">

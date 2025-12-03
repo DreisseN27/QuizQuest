@@ -49,13 +49,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
     <title>QuizQuest Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="QuizQuest/assets/css/login.css">
 </head>
 <body>
 
 <header class="header">
     <div class="logo-container">
-        <img src="assets/images/logo.png" alt="QuizQuest Logo">
+        <img src="QuizQuests/assets/images/logo.png" alt="QuizQuest Logo">
     </div>
 </header>
 
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
         <div class="right-side">
 
             <div class="title">
-                <img src="assets/images/quizquest-title.png">
+                <img src="QuizQuest/assets/images/quizquest-title.png">
             </div>
             
             <p class="subheading">Where every quiz is an adventure!</p>
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
                 <div class="register-footer">
 
                     <p class="no-account">
-                        <a href="entry_page.php" class="btn-link">Don't have an account?</a>
+                        <a href="QuizQuest/entry_page.php" class="btn-link">Don't have an account?</a>
                     </p>
                     
                 </div>
