@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             $_SESSION["user"] = $user["username"];
             $_SESSION["role"] = $user["role"]; // store role in session
 
-            // ---------- Redirect based on role ----------
+            // Redirect based on role (case-insensitive)
             $role = strtolower($user["role"]);
             if ($role === "teacher") {
                 header("Location: teacher.php");
@@ -34,8 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
             } elseif ($role === "student") {
                 header("Location: student.php");
                 exit;
+            } else {
+                $error = "Unknown role. Contact admin.";
+                $shake = true;
             }
-            // ------------------------------------------
         } else {
             $error = "Incorrect password.";
             $shake = true;
