@@ -34,7 +34,7 @@
             <p class="subheading">Where every quiz is an adventure!</p>
 
             <div class="buttons">
-                    <button type="button" class="btn-login" onclick="window.location.href='QuizQuest/login.php'">
+                    <button type="button" class="btn-login" onclick="window.location.href='login.php'">
                         Login
                     </button>
 
@@ -43,8 +43,8 @@
                         Sign Up
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="registerDropdown">
-                        <li><a class="dropdown-item" href="QuizQuest/register_student.php">Student</a></li>
-                        <li><a class="dropdown-item" href="QuizQuest/register_teacher.php">Teacher</a></li>
+                        <li><a class="dropdown-item" href="register_student.php">Student</a></li>
+                        <li><a class="dropdown-item" href="register_teacher.php">Teacher</a></li>
                     </ul>
                 </div>
             </div>
