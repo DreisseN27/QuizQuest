@@ -2,9 +2,10 @@
 session_start();
 include "config.php";
 
-$error = "";
-$shake = false;
+$error = "";   // Error message text
+$shake = false; // Used to trigger shake animation
 
+// Only process login if form is submitted via POST and login button was pressed
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
 
     $username = trim($_POST['username'] ?? '');
@@ -28,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                 $_SESSION['user'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
 
-                // Fix: assign role variable
-                $role = strtolower(trim($user['role']));
+                // --- Role check for redirection ---
+                $role = strtolower(trim($user['role'])); // fix: assign role variable properly
 
                 if ($role === 'teacher') {
                     header("Location: teacher.php");
@@ -41,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                     $error = "Unknown role. Contact admin.";
                     $shake = true;
                 }
-            }
+                // ---------------------------------
             } else {
                 $error = "Incorrect password.";
                 $shake = true;
@@ -52,7 +53,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
         }
     }
 }
-
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
     // Optional: redirect to entry page
     header("Location: entry_page.php");
