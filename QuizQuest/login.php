@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
 
 <header class="header">
     <div class="logo-container">
-        <img src="QuizQuests/assets/images/logo.png" alt="QuizQuest Logo">
+        <img src="QuizQuest/assets/images/logo.png" alt="QuizQuest Logo">
     </div>
 </header>
 
@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
         <div class="right-side">
 
             <div class="title">
-                <img src="QuizQuest/assets/images/quizquest-title.png">
+                <img src="\assets/images/quizquest-title.png">
             </div>
             
             <p class="subheading">Where every quiz is an adventure!</p>
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["cancel"])) {
                 <div class="register-footer">
 
                     <p class="no-account">
-                        <a href="QuizQuest/entry_page.php" class="btn-link">Don't have an account?</a>
+                        <a href="entry_page.php" class="btn-link">Don't have an account?</a>
                     </p>
                     
                 </div>
