@@ -14,42 +14,43 @@ $success = "";
 $shakeClass = ""; // CSS class for shake animation
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
+
+    // ---------- Adjusted variables to match users table ----------
     $username = trim($_POST["username"] ?? "");
     $full_name = trim($_POST["full_name"] ?? "");
     $email = trim($_POST["email"] ?? "");
     $school_affiliation = trim($_POST["school_affiliation"] ?? "");
     $password = trim($_POST["password"] ?? "");
     $confirm_password = trim($_POST["confirm_password"] ?? "");
-    $role = $_POST["role"] ?? 'teacher';
+    $role = "teacher"; // fixed role for this form
+    // -------------------------------------------------------------
 
     if (empty($username) || empty($full_name) || empty($email) || empty($school_affiliation) || empty($password) || empty($confirm_password)) {
         $error = "All fields are required.";
     } elseif ($password !== $confirm_password) {
         $error = "Passwords do not match.";
     } else {
-        // Check if username exists
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username=?");
+        // Check username
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username=? LIMIT 1");
         $stmt->bind_param("s", $username);
         $stmt->execute();
-        $result = $stmt->get_result();
-
-        if ($result->num_rows > 0) {
+        if ($stmt->get_result()->num_rows > 0) {
             $error = "Username already taken.";
         } else {
-            // Check if email exists
-            $stmt = $conn->prepare("SELECT * FROM users WHERE email=?");
+            // Check email
+            $stmt = $conn->prepare("SELECT id FROM users WHERE email=? LIMIT 1");
             $stmt->bind_param("s", $email);
             $stmt->execute();
-            $email_result = $stmt->get_result();
-
-            if ($email_result->num_rows > 0) {
+            if ($stmt->get_result()->num_rows > 0) {
                 $error = "Email already registered.";
             } else {
-                // Insert new user
+                // Insert teacher with school_affiliation
                 $hashed = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $conn->prepare("INSERT INTO users (username, full_name, email, school_affiliation, password, role) VALUES (?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("ssssss", $username, $full_name, $email, $school_affiliation, $hashed, $role);
-
+                $stmt = $conn->prepare(
+                    "INSERT INTO users (username, full_name, email, password, role, school_affiliation) 
+                     VALUES (?, ?, ?, ?, ?, ?)"
+                );
+                $stmt->bind_param("ssssss", $username, $full_name, $email, $hashed, $role, $school_affiliation);
                 if ($stmt->execute()) {
                     $success = "Registration successful! You can now <a href='login.php'>login</a>.";
                 } else {
@@ -59,10 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["register"])) {
         }
     }
 
-    // Trigger shake if error exists
-    if (!empty($error)) {
-        $shakeClass = "error-shake";
-    }
+    if (!empty($error)) $shakeClass = "error-shake";
 }
 ?>
 
