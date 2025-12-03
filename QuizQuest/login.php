@@ -28,17 +28,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
                 $_SESSION['user'] = $user['username'];
                 $_SESSION['role'] = $user['role'];
 
-                // Redirect based on role
-                if ($user['role'] === 'teacher') {
+                // Fix: assign role variable
+                $role = strtolower(trim($user['role']));
+
+                if ($role === 'teacher') {
                     header("Location: teacher.php");
                     exit;
-                } elseif ($user['role'] === 'student') {
+                } elseif ($role === 'student') {
                     header("Location: student.php");
                     exit;
                 } else {
                     $error = "Unknown role. Contact admin.";
                     $shake = true;
                 }
+            }
             } else {
                 $error = "Incorrect password.";
                 $shake = true;
