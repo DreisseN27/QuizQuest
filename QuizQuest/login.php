@@ -24,8 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
         // Verify password
         if (password_verify($password, $user["password"])) {
             $_SESSION["user"] = $user["username"];
-            header("Location: index.php");
-            exit;
+            $_SESSION["role"] = $user["role"]; // store role in session
+
+            // ---------- Redirect based on role ----------
+            if ($user["role"] === "teacher") {
+                header("Location: teacher.php");
+                exit;
+            } elseif ($user["role"] === "student") {
+                header("Location: student.php");
+                exit;
+            } else {
+                $error = "Unknown role. Contact admin.";
+                $shake = true;
+            }
         } else {
             $error = "Incorrect password.";
             $shake = true;
