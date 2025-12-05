@@ -1,0 +1,88 @@
+/* ===== Canvas Background ===== */
+#background-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
+
+/* ===== Global ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Inter",Arial,sans-serif;}
+body {height:100vh;display:flex;color:#fff;overflow-y:auto;background:linear-gradient(135deg,#6D28D9,#F472B6);}
+
+/* ===== Sidebar ===== */
+.sidebar{width:260px;height:100vh;position:fixed;left:0;top:0;padding:28px 20px;background:rgba(0,0,0,0.15);backdrop-filter:blur(2px);border-right:1px solid rgba(255,255,255,0.2);display:flex;flex-direction:column;}
+
+
+/* ===== Logo ===== */
+.logo-img{width:160px;height:auto;align-self:center;margin-bottom:30px;animation:float 3s ease-in-out infinite,pulse-logo 4s ease-in-out infinite;}
+.logo-img:hover{filter:drop-shadow(0 0 15px #fff) drop-shadow(0 0 35px #AC54DF) drop-shadow(0 0 50px #F472B6);transform:scale(1.1);}
+@keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-8px);}100%{transform:translateY(0);}}
+@keyframes pulse-logo{0%,100%{filter:drop-shadow(0 0 20px #AC54DF) drop-shadow(0 0 40px #F472B6);}50%{filter:drop-shadow(0 0 35px #AC54DF) drop-shadow(0 0 60px #F472B6);}}
+
+/* ===== Nav Items ===== */
+.menu-wrapper{display:flex;flex-direction:column;gap:20px;}
+.nav{display:flex;flex-direction:column;gap:12px;}
+.nav-item{padding:12px 16px;text-decoration:none;color:#fff;background:rgba(255,255,255,0.05);border-radius:10px;font-size:16px;transition:.3s;display:flex;align-items:center;gap:10px;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;justify-content:flex-start;}
+.nav-item:hover{background:rgba(255,255,255,0.2);transform:translateX(4px) scale(1.03);filter:drop-shadow(0 0 12px #AC54DF) drop-shadow(0 0 25px #F472B6);}
+.nav-item i{width:20px;height:20px;min-width:20px;}
+.nav-item.active{background:rgba(255,255,255,0.25);animation:pulse-glow 2s infinite;}
+@keyframes pulse-glow{0%{box-shadow:0 0 5px #AC54DF;}50%{box-shadow:0 0 30px #F472B6;}100%{box-shadow:0 0 5px #AC54DF;}}
+
+/* ===== Logout ===== */
+.logout{margin-top:auto;padding:12px 16px;background:rgba(255,255,255,0.05);border-radius:10px;text-decoration:none;color:#fff;text-align:center;display:flex;align-items:center;gap:8px;transition:.3s;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;justify-content:flex-start;}
+.logout:hover{background:rgba(255,255,255,0.25);transform:translateX(4px) scale(1.03);filter:drop-shadow(0 0 15px #AC54DF) drop-shadow(0 0 35px #F472B6);}
+
+/* ===== Main Content ===== */
+.content{margin-left:280px;width:calc(100% - 280px);padding:30px;display:flex;flex-direction:column;gap:20px;}
+
+/* ===== Quiz Cards ===== */
+.subject-card{border-radius:20px;overflow:hidden;border:none;background:linear-gradient(135deg,#6D28D9,#F472B6);color:#fff;transition:.3s;cursor:pointer;position:relative;box-shadow:0 0 10px #AC54DF inset;}
+.subject-card::before{content:"";position:absolute;top:-20px;left:-20px;width:calc(100% + 40px);height:calc(100% + 40px);border-radius:24px;background:linear-gradient(45deg,#AC54DF,#F472B6,#4F46E5,#FBBF24);opacity:0.15;filter:blur(20px);transition:.3s;z-index:-1;}
+.subject-card:hover::before{opacity:0.35;filter:blur(30px);transform:scale(1.05);}
+.subject-card:hover{transform:translateY(-12px) rotate(-2deg) scale(1.03);box-shadow:0 0 35px #AC54DF,0 0 60px #F472B6;filter:drop-shadow(0 0 25px #AC54DF);}
+.subject-card:hover::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,#fff8 0%,#fff0 70%);animation:shimmer 1.5s infinite;pointer-events:none;border-radius:20px;}
+@keyframes shimmer{0%{opacity:0;}50%{opacity:0.4;}100%{opacity:0;}}
+.subject-card .card-body{background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);transition:.3s;}
+.subject-card .card-title,.subject-card small,.subject-card .card-text{color:#fff;text-shadow:0 0 5px #AC54DF;}
+.subject-card .list-group-item{background:transparent;border:0;color:#f9fafb;}
+.subject-card .list-group-item .btn-outline-primary{border-color:#fff;color:#fff;transition:.3s;}
+.subject-card .list-group-item .btn-outline-primary:hover{background:#fff;color:#1d4ed8;}
+.subject-card .btn-outline-secondary{border-color:#e5e7eb;color:#e5e7eb;transition:.3s;}
+.subject-card .btn-outline-secondary:hover{background:#e5e7eb;color:#111827;}
+
+/* ===== Avatar Container ===== */ .avatar-container{display:inline-flex;align-items:center;gap:12px;padding:8px 16px;border:2px solid rgba(255,255,255,0.4);border-radius:14px;background-color:rgba(255,255,255,0);box-shadow:0 4px 15px rgba(0,0,0,0.25);width:auto;max-width:fit-content;} /* tightly wraps text and avatar */
+/* ===== Avatar Image ===== */ .freiren-avatar{width:80px;height:80px;border-radius:12px;animation:float 3s ease-in-out infinite;} /* subtle float for avatar */
+/* ===== Greeting Text ===== */ .greeting{font-size:42px;font-weight:800;color:#fff;text-shadow:0 0 6px rgba(0,0,0,0.7);margin:0;white-space:nowrap;} /* white text with shadow */
+/* ===== Float Animation ===== */ @keyframes float{0%{transform:translateY(0);}50%{transform:translateY(-5px);}100%{transform:translateY(0);}} /* subtle up-down float */
+/* ===== Your Quizzes Smaller ===== */ .quizzes-title{font-size:28px;color:#fff;font-weight:600;text-shadow:0 0 5px rgba(0,0,0,0.3);} /* smaller than greeting, professional look */
+
+.quiz-tab.active {background: rgba(255,255,255,0.25); animation: pulse-glow 2s infinite;}
+
+/* ===== Profile Page Styles ===== */
+.content{padding:2rem;min-height:100vh;}
+.greeting-box{display:flex;align-items:center;gap:2rem;background:rgba(255,255,255,0.05);backdrop-filter:blur(12px);padding:1.5rem 2rem;border-radius:20px;margin-bottom:2rem;box-shadow:0 8px 20px rgba(0,0,0,0.3);transition:all 0.5s ease;}
+.greeting-img{width:150px;height:150px;object-fit:cover;border-radius:15px;border:3px solid #fff;flex-shrink:0;}
+.greeting-text{flex:1;}
+.greeting-text small{color:#ccc;font-size:0.9rem;}
+.greeting-text h2{margin:0;font-size:2rem;}
+.greeting-box-line{border-top:1px solid rgba(255,255,255,0.3);margin:0.5rem 0;}
+#profileEdit{display:none;}
+.form-control{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:10px;}
+.form-control:focus{background:rgba(255,255,255,0.15);border-color:#fff;box-shadow:none;color:#fff;}
+.btn-primary{border-radius:10px;padding:0.6rem 1.8rem;font-weight:600;font-size:1rem;transition:all 0.3s;}
+.btn-primary:hover{transform:translateY(-2px);}
+
+/* ===== Single Profile Card Wrapper ===== */
+.single-profile-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border-radius:20px;padding:2rem;box-shadow:0 10px 25px rgba(0,0,0,0.25);display:flex;flex-direction:column;gap:1.5rem;transition:all 0.3s ease;}
+.single-profile-card:hover{transform:translateY(-3px);}
+.profile-row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,0.2);padding:0.75rem 0;}
+.profile-row:last-child{border-bottom:none;}
+.profile-row dt{font-weight:600;color:#ccc;font-size:1rem;}
+.profile-row dd{font-size:1.2rem;margin:0;color:#fff;text-align:right;}
+#profileView .btn-primary{align-self:center;}
+
+.quizmaker-content{margin-left:280px;width:calc(100% - 280px);padding:30px;display:flex;flex-direction:column;gap:20px;min-height:100vh;background:linear-gradient(135deg,#6D28D9,#F472B6);}
+.quiz-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(15px);border-radius:20px;padding:2rem;box-shadow:0 10px 25px rgba(0,0,0,0.25);display:flex;flex-direction:column;gap:1.5rem;transition:all 0.3s ease;}
+.quiz-card:hover{transform:translateY(-3px);}
+.quiz-card input,.quiz-card textarea,.quiz-card select{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);color:#fff;border-radius:10px;padding:0.5rem 0.75rem;transition:all 0.3s;width:100%;font-size:1rem;}
+.quiz-card input:focus,.quiz-card textarea:focus,.quiz-card select:focus{background:rgba(255,255,255,0.15);border-color:#fff;box-shadow:none;color:#fff;}
+.quiz-card button,.quiz-card .btn{border-radius:10px;padding:0.6rem 1.8rem;font-weight:600;font-size:1rem;transition:all 0.3s;}
+
+
+/* ===== WORKING ===== */
