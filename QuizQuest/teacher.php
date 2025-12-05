@@ -93,7 +93,7 @@ function renderQuizCards($conn, $teacher_id, $teacher_name) {
       <ul class="nav nav-pills nav-pills-small w-100 align-items-center">
         <div class="d-flex justify-content-center flex-grow-1 gap-2">
           <li class="nav-item">
-            <a class="nav-link" href="profile.php">Profile (<?php echo htmlspecialchars($teacher_name); ?>)</a>
+            <a class="nav-link" href="profile.php">Profile <?php echo htmlspecialchars($teacher_name); ?></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="quizmaker/index.php">Quizmaker</a>
