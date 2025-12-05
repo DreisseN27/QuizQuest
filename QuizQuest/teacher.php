@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 
 // Logged in teacher info
 $teacher_id   = $_SESSION['user_id'];
-$teacher_name = $_SESSION['username']; // or store full_name in session if you prefer
+$teacher_name = $_SESSION['username'];
 
 // Function to render quiz cards for THIS teacher
 function renderQuizCards($conn, $teacher_id, $teacher_name) {
