@@ -17,25 +17,32 @@ body {
    RESULT CARD
    =============================== */
 .card-result {
-    background: #1e1e28; /* solid dark instead of semi-transparent */
+    background: #1a1a28; /* Slightly lighter for depth */
     border-radius: 20px;
-    padding: 2.5rem 2rem; /* a bit more padding */
+    padding: 2.5rem 2rem;
     max-width: 420px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5); /* stronger shadow */
-    z-index: 10; /* ensure above overlay if needed */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 10;
+    transition: transform 0.2s ease;
+}
+
+.card-result:hover {
+    transform: translateY(-3px);
 }
 
 .card-result h3.card-title {
-    font-size: 1.9rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    color: #f0f0f0;
 }
 
 .card-result p {
-    margin: 0.5rem 0;
+    margin: 0.6rem 0;
     font-size: 1rem;
+    color: #ddd;
 }
 
 .text-info {
@@ -45,7 +52,7 @@ body {
 
 hr {
     border-color: rgba(255,255,255,0.2);
-    margin: 1.2rem 0;
+    margin: 1.5rem 0;
 }
 
 /* ===============================
@@ -56,6 +63,7 @@ hr {
     border-radius: 10px;
     height: 16px;
     margin-top: 0.5rem;
+    overflow: hidden;
 }
 
 .progress-bar {
@@ -95,29 +103,29 @@ hr {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6); /* slightly lighter for clarity */
-    backdrop-filter: blur(3px);
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    animation: fadeIn 0.4s ease forwards;
+    animation: fadeIn 0.3s ease forwards;
 }
 
 .popup-content {
-    background: #2c2f3a; /* darker but distinct */
+    background: #232636; /* Slightly lighter for clarity */
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
-    width: 85%;
-    max-width: 380px;
+    width: 90%;
+    max-width: 360px;
     color: white;
     animation: popIn 0.35s ease forwards;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
 }
 
 .popup-content h2 {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
     margin: 10px 0 5px;
     font-weight: bold;
     color: #4ade80;
@@ -125,7 +133,7 @@ hr {
 }
 
 .popup-content h1.new-rank {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin: 10px 0;
     font-weight: bold;
     color: #facc15;
@@ -151,18 +159,6 @@ hr {
 }
 
 @keyframes popIn {
-    from {transform: scale(0.6); opacity: 0;}
+    from {transform: scale(0.65); opacity: 0;}
     to {transform: scale(1); opacity: 1;}
-}
-
-/* ===============================
-   TEXT SHADOW FOR READABILITY
-   =============================== */
-.card-result h3,
-.card-result p,
-.text-info,
-.popup-content h2,
-.popup-content h1,
-.popup-content p {
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
 }
