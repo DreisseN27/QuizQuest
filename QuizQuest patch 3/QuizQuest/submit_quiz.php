@@ -70,7 +70,7 @@ if ($successInsert && $class_code) {
 }
 
 /* ==========================================================
-   EXP + LEVEL SYSTEM
+   EXP + LEVEL SYSTEM (FULLY FIXED)
    ========================================================== */
 
 // 1 point = 10 EXP
@@ -86,7 +86,6 @@ if ($expRow = $expResult->fetch_assoc()) {
     $current_exp = $expRow['exp'];
     $current_title = $expRow['title'];
 } else {
-    // Create blank record
     $current_exp = 0;
     $current_title = 'newbie';
     $insertExp = $conn->prepare("INSERT INTO student_exp (student_id, class_code, exp, title) VALUES (?, ?, 0, 'newbie')");
@@ -96,52 +95,54 @@ if ($expRow = $expResult->fetch_assoc()) {
 
 $new_exp = $current_exp + $earned_exp;
 
-// Level titles
-function getTitleFromExp($exp) {
-    if ($exp >= 500) return "ascendant";
-    if ($exp >= 400) return "legend";
-    if ($exp >= 350) return "champion";
-    if ($exp >= 300) return "hero";
-    if ($exp >= 250) return "master";
-    if ($exp >= 200) return "veteran";
-    if ($exp >= 150) return "adventurer";
-    if ($exp >= 100) return "recruit";
-    if ($exp >= 50)  return "beginner";
-    return "newbie";
+/* ============================
+   LEVEL DEFINITIONS (CORRECT)
+   ============================ */
+$levels = [
+    ["name" => "newbie",     "min" => 0,   "max" => 49],
+    ["name" => "beginner",   "min" => 50,  "max" => 99],
+    ["name" => "recruit",    "min" => 100, "max" => 149],
+    ["name" => "adventurer", "min" => 150, "max" => 199],
+    ["name" => "veteran",    "min" => 200, "max" => 249],
+    ["name" => "master",     "min" => 250, "max" => 299],
+    ["name" => "hero",       "min" => 300, "max" => 349],
+    ["name" => "legend",     "min" => 400, "max" => 499],
+    ["name" => "ascendant",  "min" => 500, "max" => INF]
+];
+
+function getLevelData($exp, $levels) {
+    foreach ($levels as $i => $lvl) {
+        if ($exp >= $lvl["min"] && $exp <= $lvl["max"]) {
+            $current = $lvl;
+            $next = $levels[$i + 1] ?? null;
+
+            $range = max(1, $current["max"] - $current["min"]);
+            $progress = (($exp - $current["min"]) / $range) * 100;
+            if ($progress > 100) $progress = 100;
+
+            $exp_to_next = $next ? max(0, $next["min"] - $exp) : 0;
+
+            return [
+                "current" => $current,
+                "next" => $next,
+                "progress" => $progress,
+                "exp_to_next" => $exp_to_next
+            ];
+        }
+    }
 }
 
-$new_title = getTitleFromExp($new_exp);
+$levelData = getLevelData($new_exp, $levels);
+$new_title = $levelData["current"]["name"];
+$exp_needed = $levelData["exp_to_next"];
+$progress_pct = $levelData["progress"];
 
-// Save updated EXP + Title
+// Save EXP + Title
 $updateExp = $conn->prepare("UPDATE student_exp SET exp = ?, title = ? WHERE student_id = ? AND class_code = ?");
 $updateExp->bind_param("isis", $new_exp, $new_title, $student_id, $class_code);
 $updateExp->execute();
 
-// Next level requirements
-$levels = [
-    "newbie" => 50,
-    "beginner" => 100,
-    "recruit" => 150,
-    "adventurer" => 200,
-    "veteran" => 250,
-    "master" => 300,
-    "hero" => 350,
-    "champion" => 400,
-    "legend" => 500,
-    "ascendant" => null
-];
-
-$next_threshold = $levels[$new_title];
-$exp_needed = $next_threshold ? ($next_threshold - $new_exp) : 0;
-
-$progress_pct = $next_threshold
-    ? min(100, ($new_exp / $next_threshold) * 100)
-    : 100;
-
-// Pass/fail logic
-$passed = ($total > 0 && ($score / $total) >= 0.5) ? 'Passed' : 'Failed';
 $taken_at = date('M d, Y H:i');
-
 $conn->close();
 ?>
 
@@ -195,8 +196,8 @@ body {
 
     <hr>
 
-    <?php if ($next_threshold): ?>
-        <p><?php echo $exp_needed; ?> EXP needed to reach <strong><?php echo ucfirst($new_title); ?></strong></p>
+    <?php if ($levelData["next"]): ?>
+        <p><?php echo $exp_needed; ?> EXP needed to reach <strong><?php echo ucfirst($levelData["next"]["name"]); ?></strong></p>
 
         <div class="progress mb-3">
             <div class="progress-bar" role="progressbar"
