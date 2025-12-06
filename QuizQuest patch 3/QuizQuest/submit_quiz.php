@@ -72,6 +72,7 @@ if ($successInsert && $class_code) {
 /* ==========================================================
    EXP + LEVEL SYSTEM
    ========================================================== */
+
 $earned_exp = $score * 10;
 
 // Fetch current EXP
@@ -111,11 +112,19 @@ function getLevelData($exp, $levels) {
         if ($exp >= $lvl["min"] && $exp <= $lvl["max"]) {
             $current = $lvl;
             $next = $levels[$i + 1] ?? null;
+
             $range = max(1, $current["max"] - $current["min"]);
             $progress = (($exp - $current["min"]) / $range) * 100;
-            $progress = min($progress, 100);
+            if ($progress > 100) $progress = 100;
+
             $exp_to_next = $next ? max(0, $next["min"] - $exp) : 0;
-            return ["current" => $current, "next" => $next, "progress" => $progress, "exp_to_next" => $exp_to_next];
+
+            return [
+                "current" => $current,
+                "next" => $next,
+                "progress" => $progress,
+                "exp_to_next" => $exp_to_next
+            ];
         }
     }
 }
@@ -139,23 +148,34 @@ $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Quiz Result</title>
 <link rel="stylesheet" href="submit_quiz.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
 
-<div class="card-result">
-    <?php if ($level_up): ?>
-    <div class="level-up-msg mb-3">
-        <h2>🎉 Level Up! 🎉</h2>
-        <p>You advanced from <strong><?php echo htmlspecialchars(ucfirst($old_level)); ?></strong> to <strong><?php echo htmlspecialchars(strtoupper($new_level)); ?></strong></p>
+<?php if ($level_up): ?>
+<div id="levelUpPopup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>🎉 Congratulations! 🎉</h2>
+        <p>You have risen the ranks and earned</p>
+        <h1 class="new-rank"><?php echo strtoupper($new_level); ?></h1>
+        <p class="tap-msg">Tap anywhere to continue</p>
     </div>
-    <?php endif; ?>
+</div>
 
+<script>
+document.getElementById("levelUpPopup").addEventListener("click", function() {
+    this.style.display = "none";
+});
+</script>
+<?php endif; ?>
+
+<div class="card-result">
     <h3 class="card-title"><?php echo htmlspecialchars($quizTitle); ?></h3>
     <p class="score">Score: <strong><?php echo $score; ?></strong> / <?php echo $total; ?></p>
     <p class="score">Taken on: <strong><?php echo $taken_at; ?></strong></p>
@@ -168,10 +188,11 @@ $conn->close();
 
     <hr>
 
-    <?php if (!empty($levelData["next"])): ?>
-        <p><?php echo $exp_needed; ?> EXP needed to reach <strong><?php echo htmlspecialchars(ucfirst($levelData["next"]["name"])); ?></strong></p>
+    <?php if ($levelData["next"]): ?>
+        <p><?php echo $exp_needed; ?> EXP needed to reach <strong><?php echo ucfirst($levelData["next"]["name"]); ?></strong></p>
+
         <div class="progress mb-3">
-            <div class="progress-bar" role="progressbar" style="width: <?php echo $progress_pct; ?>%;" aria-valuenow="<?php echo $progress_pct; ?>" aria-valuemin="0" aria-valuemax="100"></div>
+            <div class="progress-bar" style="width: <?php echo $progress_pct; ?>%;"></div>
         </div>
     <?php else: ?>
         <p>You reached the MAX title: <strong>Ascendant</strong></p>
