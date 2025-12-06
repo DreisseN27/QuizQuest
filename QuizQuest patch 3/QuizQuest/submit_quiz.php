@@ -157,7 +157,7 @@ $conn->close();
 </head>
 
 <body>
-
+<canvas id="background-canvas"></canvas>
 <?php if ($level_up): ?>
 <div id="levelUpPopup" class="popup-overlay">
     <div class="popup-content">
@@ -200,6 +200,6 @@ document.getElementById("levelUpPopup").addEventListener("click", function() {
 
     <a href="student.php" class="btn btn-success btn-back mt-3">Continue</a>
 </div>
-
+<script src="teacherscripts.js"></script>
 </body>
 </html>
