@@ -1,41 +1,39 @@
 body {
     margin: 0;
     overflow-x: hidden;
-    position: relative;
-    font-family: Arial, sans-serif;
     background: radial-gradient(circle at top, #1a1e2e 0%, #0d1117 70%);
+    position: relative;
 }
 
-/* Canvas background */
 #background-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: -1; /* Keep it behind everything */
+    z-index: -1;
     pointer-events: none;
 }
 
-/* Card result */
 .card-result {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 2rem;
     max-width: 420px;
-    width: 100%;
+    width: 90%;
     text-align: center;
-
-    /* Added: */
+    margin: 50px auto;
     position: relative;
-    z-index: 10;  /* Ensure it's above the canvas */
-    margin: 5% auto;  /* Center vertically with some space from top */
+    z-index: 10;
 }
 
-/* Progress bar */
+.card-title {
+    margin-bottom: 1rem;
+}
+
 .progress {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
     border-radius: 10px;
 }
 
@@ -49,41 +47,12 @@ body {
     color: #60a5fa;
 }
 
-/* Level up popup */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(4px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999; /* above everything */
-}
-
-.popup-content {
-    background: #1f2937;
-    padding: 2rem;
-    border-radius: 20px;
-    text-align: center;
-    width: 85%;
-    max-width: 380px;
-    color: white;
-}
-
-.popup-content h1 {
-    font-size: 2.2rem;
-    margin: 10px 0;
-    font-weight: bold;
-    color: #4ade80;
-    text-transform: uppercase;
-}
-
-.tap-msg {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    opacity: 0.7;
+/* ===========================
+   LEVEL UP INLINE MESSAGE
+   =========================== */
+.level-up-msg {
+    background-color: #4ade80;
+    color: #111;
+    padding: 1rem;
+    border-radius: 15px;
 }
