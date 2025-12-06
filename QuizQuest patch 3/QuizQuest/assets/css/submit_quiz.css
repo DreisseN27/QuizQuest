@@ -1,8 +1,11 @@
+/* ===== Body & Canvas ===== */
 body {
     margin: 0;
     overflow-x: hidden;
     background: radial-gradient(circle at top, #1a1e2e 0%, #0d1117 70%);
     position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
 }
 
 #background-canvas {
@@ -15,44 +18,108 @@ body {
     pointer-events: none;
 }
 
+/* ===== Result Card ===== */
 .card-result {
-    background: rgba(30,30,40,0.85); /* darker and more opaque */
+    background: rgba(30, 30, 40, 0.85); /* solid but slightly transparent */
     backdrop-filter: blur(15px);
     border-radius: 20px;
-    padding: 2rem;
-    max-width: 420px;
+    padding: 2rem 2.5rem;
+    max-width: 450px;
     width: 90%;
     text-align: center;
     margin: 80px auto; /* space from top */
     position: relative;
     z-index: 10;
-    color: #fff; /* ensure text is readable */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
+
 .card-title {
     margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
-.progress {
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-}
-
-.progress-bar {
-    background-color: #4ade80;
-    height: 15px;
-    border-radius: 10px;
+.score {
+    font-size: 1.2rem;
+    margin: 0.3rem 0;
 }
 
 .text-info {
     color: #60a5fa;
+    font-weight: 500;
 }
 
-/* ===========================
-   LEVEL UP INLINE MESSAGE
-   =========================== */
+/* ===== Progress Bar ===== */
+.progress {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    height: 18px;
+}
+
+.progress-bar {
+    background-color: #4ade80;
+    border-radius: 12px;
+    height: 100%;
+}
+
+/* ===== Level-Up Inline Message ===== */
 .level-up-msg {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: #fff;
+    padding: 1rem 1.2rem;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    animation: popIn 0.5s ease;
+}
+
+.level-up-msg h2 {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.level-up-msg p {
+    margin: 0.4rem 0 0;
+    font-size: 1rem;
+}
+
+/* ===== Button ===== */
+.btn-back {
     background-color: #4ade80;
     color: #111;
-    padding: 1rem;
-    border-radius: 15px;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-back:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    color: #111;
+}
+
+/* ===== Animations ===== */
+@keyframes popIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===== Text Shadow for Better Visibility on Stars ===== */
+.card-result h3,
+.card-result p,
+.card-result .text-info,
+.level-up-msg h2,
+.level-up-msg p {
+    text-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
 }
