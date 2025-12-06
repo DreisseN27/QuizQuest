@@ -70,7 +70,7 @@ if ($successInsert && $class_code) {
 }
 
 /* ==========================================================
-   EXP + LEVEL SYSTEM (FULLY FIXED)
+   EXP + LEVEL SYSTEM
    ========================================================== */
 
 // 1 point = 10 EXP
@@ -84,10 +84,10 @@ $expResult = $expStmt->get_result();
 
 if ($expRow = $expResult->fetch_assoc()) {
     $current_exp = $expRow['exp'];
-    $current_title = $expRow['title'];
+    $old_title = $expRow['title']; // STORE OLD TITLE
 } else {
     $current_exp = 0;
-    $current_title = 'newbie';
+    $old_title = 'newbie';
     $insertExp = $conn->prepare("INSERT INTO student_exp (student_id, class_code, exp, title) VALUES (?, ?, 0, 'newbie')");
     $insertExp->bind_param("is", $student_id, $class_code);
     $insertExp->execute();
@@ -96,7 +96,7 @@ if ($expRow = $expResult->fetch_assoc()) {
 $new_exp = $current_exp + $earned_exp;
 
 /* ============================
-   LEVEL DEFINITIONS (CORRECT)
+   LEVEL DEFINITIONS
    ============================ */
 $levels = [
     ["name" => "newbie",     "min" => 0,   "max" => 49],
@@ -137,6 +137,9 @@ $new_title = $levelData["current"]["name"];
 $exp_needed = $levelData["exp_to_next"];
 $progress_pct = $levelData["progress"];
 
+// Check if leveled up
+$leveled_up = ($new_title !== $old_title);
+
 // Save EXP + Title
 $updateExp = $conn->prepare("UPDATE student_exp SET exp = ?, title = ? WHERE student_id = ? AND class_code = ?");
 $updateExp->bind_param("isis", $new_exp, $new_title, $student_id, $class_code);
@@ -162,6 +165,8 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* CARD */
 .card-result {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(15px);
@@ -171,17 +176,63 @@ body {
     width: 100%;
     text-align: center;
 }
-.progress {
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
+
+/* POPUP OVERLAY */
+#levelUpPopup {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
 }
-.progress-bar {
-    background-color: #4ade80;
+
+/* POPUP BOX */
+.popup-box {
+    background: #1f2937;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    width: 85%;
+    max-width: 350px;
+    animation: popupIn 0.4s ease-out;
 }
-.text-info { color: #60a5fa; }
+
+/* POPUP ANIMATION */
+@keyframes popupIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.popup-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+.popup-text {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
 </style>
 </head>
 <body>
+
+<!-- LEVEL UP POPUP -->
+<?php if ($leveled_up): ?>
+<div id="levelUpPopup">
+    <div class="popup-box">
+        <div class="popup-title">Congratulations!</div>
+        <div class="popup-text">
+            You have risen the ranks and earned<br>
+            <strong><?php echo strtoupper($new_title); ?></strong>
+        </div>
+        <p style="margin-top:15px; font-size:0.9rem; opacity:0.7;">Tap anywhere to continue</p>
+    </div>
+</div>
+<?php endif; ?>
 
 <div class="card-result">
     <h3 class="card-title"><?php echo htmlspecialchars($quizTitle); ?></h3>
@@ -211,6 +262,19 @@ body {
 
     <a href="student.php" class="btn btn-success btn-back mt-3">Continue</a>
 </div>
+
+<script>
+// Hide popup when clicking anywhere
+document.addEventListener("click", () => {
+    const popup = document.getElementById("levelUpPopup");
+    if (popup) popup.style.display = "none";
+});
+
+// Show popup automatically if leveled up
+<?php if ($leveled_up): ?>
+    document.getElementById("levelUpPopup").style.display = "flex";
+<?php endif; ?>
+</script>
 
 </body>
 </html>
