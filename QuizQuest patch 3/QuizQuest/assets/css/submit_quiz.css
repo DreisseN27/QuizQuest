@@ -13,24 +13,24 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 0; /* lower than content */
+    z-index: -1; /* Keep it behind everything */
     pointer-events: none;
 }
 
 /* Card result */
 .card-result {
-    position: relative; /* must be relative for z-index */
-    z-index: 10;        /* above canvas */
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255,255,255,0.05);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 2rem;
     max-width: 420px;
-    width: 90%;
-    margin: 6rem auto;  /* vertically center a bit */
+    width: 100%;
     text-align: center;
-    color: white;       /* ensure text is visible on dark canvas */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+
+    /* Added: */
+    position: relative;
+    z-index: 10;  /* Ensure it's above the canvas */
+    margin: 5% auto;  /* Center vertically with some space from top */
 }
 
 /* Progress bar */
