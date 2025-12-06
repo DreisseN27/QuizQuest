@@ -9,31 +9,32 @@ body {
     align-items: center;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
     margin: 0;
+    padding: 20px;
 }
 
 /* ===============================
    RESULT CARD
    =============================== */
 .card-result {
-    background: rgba(30, 30, 40, 0.95);
+    background: #1e1e28; /* solid dark instead of semi-transparent */
     border-radius: 20px;
-    padding: 2rem;
+    padding: 2.5rem 2rem; /* a bit more padding */
     max-width: 420px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5); /* stronger shadow */
+    z-index: 10; /* ensure above overlay if needed */
 }
 
 .card-result h3.card-title {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
     font-weight: 600;
 }
 
 .card-result p {
-    margin: 0.4rem 0;
+    margin: 0.5rem 0;
     font-size: 1rem;
 }
 
@@ -43,8 +44,8 @@ body {
 }
 
 hr {
-    border-color: rgba(255,255,255,0.1);
-    margin: 1rem 0;
+    border-color: rgba(255,255,255,0.2);
+    margin: 1.2rem 0;
 }
 
 /* ===============================
@@ -53,7 +54,8 @@ hr {
 .progress {
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
-    height: 15px;
+    height: 16px;
+    margin-top: 0.5rem;
 }
 
 .progress-bar {
@@ -70,11 +72,11 @@ hr {
     background-color: #4ade80;
     color: #111;
     font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    padding: 0.6rem 1.4rem;
     border-radius: 10px;
     text-decoration: none;
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -93,8 +95,8 @@ hr {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(4px);
+    background: rgba(0,0,0,0.6); /* slightly lighter for clarity */
+    backdrop-filter: blur(3px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -103,7 +105,7 @@ hr {
 }
 
 .popup-content {
-    background: #1f2937;
+    background: #2c2f3a; /* darker but distinct */
     padding: 2rem;
     border-radius: 20px;
     text-align: center;
@@ -111,6 +113,7 @@ hr {
     max-width: 380px;
     color: white;
     animation: popIn 0.35s ease forwards;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 .popup-content h2 {
@@ -135,8 +138,8 @@ hr {
 
 .tap-msg {
     margin-top: 10px;
-    font-size: 0.9rem;
-    opacity: 0.7;
+    font-size: 0.95rem;
+    opacity: 0.8;
 }
 
 /* ===============================
