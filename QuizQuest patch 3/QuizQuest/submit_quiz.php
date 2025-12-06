@@ -148,22 +148,22 @@ $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Quiz Result</title>
-<link rel="stylesheet" href="submit_quiz.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="submit_quiz.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body>
 <canvas id="background-canvas"></canvas>
+
 <?php if ($level_up): ?>
 <div id="levelUpPopup" class="popup-overlay">
     <div class="popup-content">
         <h2>🎉 Congratulations! 🎉</h2>
         <p>You have risen the ranks and earned</p>
-        <h1 class="new-rank"><?php echo strtoupper($new_level); ?></h1>
+        <h1 class="new-rank"><?php echo htmlspecialchars(strtoupper($new_level)); ?></h1>
         <p class="tap-msg">Tap anywhere to continue</p>
     </div>
 </div>
@@ -188,11 +188,10 @@ document.getElementById("levelUpPopup").addEventListener("click", function() {
 
     <hr>
 
-    <?php if ($levelData["next"]): ?>
-        <p><?php echo $exp_needed; ?> EXP needed to reach <strong><?php echo ucfirst($levelData["next"]["name"]); ?></strong></p>
-
+    <?php if (!empty($levelData["next"])): ?>
+        <p><?php echo $exp_needed; ?> EXP needed to reach <strong><?php echo htmlspecialchars(ucfirst($levelData["next"]["name"])); ?></strong></p>
         <div class="progress mb-3">
-            <div class="progress-bar" style="width: <?php echo $progress_pct; ?>%;"></div>
+            <div class="progress-bar" role="progressbar" style="width: <?php echo $progress_pct; ?>%;" aria-valuenow="<?php echo $progress_pct; ?>" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
     <?php else: ?>
         <p>You reached the MAX title: <strong>Ascendant</strong></p>
@@ -200,6 +199,7 @@ document.getElementById("levelUpPopup").addEventListener("click", function() {
 
     <a href="student.php" class="btn btn-success btn-back mt-3">Continue</a>
 </div>
+
 <script src="teacherscripts.js"></script>
 </body>
 </html>
