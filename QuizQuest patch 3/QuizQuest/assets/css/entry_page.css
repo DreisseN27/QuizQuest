@@ -56,10 +56,10 @@ body {
 
 /* Left side image */
 .left-image {
-    width: 120%;
-    height: 130%;
-    object-fit: cover;
-    transform: translateY(-10%);
+    width: 110%;        /* make it a bit wider so shifting left looks good */
+    height: 100%;       /* fills the panel top to bottom */
+    object-fit: cover;  /* makes the GIF fill the space without distortion */
+    transform: translateX(-5%);   /* move left (adjust %) */
 }
 
 
@@ -134,7 +134,6 @@ body {
     box-shadow: 0 0 15px rgba(234, 150, 241, 0.7);
 }
 
-/* Make the dropdown menu appear below button neatly */
 .buttons .dropdown-menu {
     min-width: 200px; /* same as button width */
     font-size: 20px;
