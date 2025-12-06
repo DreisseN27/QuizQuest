@@ -147,7 +147,6 @@ $conn->close();
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<canvas id="background-canvas"></canvas>
 
 <div class="card-result">
     <?php if ($level_up): ?>
@@ -181,6 +180,5 @@ $conn->close();
     <a href="student.php" class="btn btn-success btn-back mt-3">Continue</a>
 </div>
 
-<script src="teacherscripts.js"></script>
 </body>
 </html>

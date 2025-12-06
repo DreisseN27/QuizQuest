@@ -1,35 +1,21 @@
-/* ===== Body & Canvas ===== */
+/* ===== Body ===== */
 body {
     margin: 0;
     overflow-x: hidden;
     background: radial-gradient(circle at top, #1a1e2e 0%, #0d1117 70%);
-    position: relative;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #fff;
 }
 
-#background-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    pointer-events: none;
-}
-
 /* ===== Result Card ===== */
 .card-result {
-    background: rgba(30, 30, 40, 0.85); /* solid but slightly transparent */
-    backdrop-filter: blur(15px);
+    background: rgba(30, 30, 40, 0.95); /* solid background */
     border-radius: 20px;
     padding: 2rem 2.5rem;
     max-width: 450px;
     width: 90%;
     text-align: center;
     margin: 80px auto; /* space from top */
-    position: relative;
-    z-index: 10;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
@@ -115,7 +101,7 @@ body {
     }
 }
 
-/* ===== Text Shadow for Better Visibility on Stars ===== */
+/* ===== Text Shadow ===== */
 .card-result h3,
 .card-result p,
 .card-result .text-info,
