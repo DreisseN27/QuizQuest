@@ -2,8 +2,7 @@
    BASE BODY STYLES
    =============================== */
 body {
-    background: #0d1117;
-    color: #fff;
+    background-color: #0d1117;
     min-height: 100vh;
     display: flex;
     align-items: center;
