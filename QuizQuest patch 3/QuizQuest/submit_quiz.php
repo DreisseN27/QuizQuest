@@ -150,10 +150,10 @@ $conn->close();
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Quiz Result</title>
-<link rel="stylesheet" href="assets/css/submit_quiz.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Quiz Result</title>
+    <link rel="stylesheet" href="assets/css/submit_quiz.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
