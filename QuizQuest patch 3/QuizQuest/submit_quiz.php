@@ -174,7 +174,7 @@ document.getElementById("levelUpPopup").addEventListener("click", function() {
 });
 </script>
 <?php endif; ?>
-
+<canvas id="background-canvas"></canvas>
 <div class="card-result">
     <h3 class="card-title"><?php echo htmlspecialchars($quizTitle); ?></h3>
     <p class="score">Score: <strong><?php echo $score; ?></strong> / <?php echo $total; ?></p>
@@ -200,6 +200,7 @@ document.getElementById("levelUpPopup").addEventListener("click", function() {
 
     <a href="student.php" class="btn btn-success btn-back mt-3">Continue</a>
 </div>
+<script src="teacherscripts.js"></script>
 
 </body>
 </html>
