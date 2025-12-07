@@ -1,0 +1,92 @@
+RAW INPUT: {"class_id":5,"class_code":"S9TRZZ3","title":"we shall check","questions":[{"type":"identification","text":"checkingggg","correct":"chechhnyaa","choices":null}]}
+EXTRACTED VALUES: class_id=5, class_code=S9TRZZ3, teacher_id=2, title=we shall check
+DB FETCH CLASS: {"class_code":"S9TRZZ3","teacher_id":2}
+QUIZ INSERTED: quiz_id=32, class_id=5
+RAW INPUT: {"class_id":5,"class_code":"S9TRZZ3","title":"is it still working?","questions":[{"type":"identification","text":"yep working","correct":"is he telling the truth?","choices":null}]}
+EXTRACTED VALUES: class_id=5, class_code=S9TRZZ3, teacher_id=2, title=is it still working?
+DB FETCH CLASS: {"class_code":"S9TRZZ3","teacher_id":2}
+QUIZ INSERTED: quiz_id=33, class_id=5
+RAW INPUT: {"class_id":7,"class_code":"5UNYDVM","title":"can i create?","questions":[{"type":"identification","text":"shii, hopefully yes","correct":"did it work?","choices":null}]}
+EXTRACTED VALUES: class_id=7, class_code=5UNYDVM, teacher_id=2, title=can i create?
+DB FETCH CLASS: {"class_code":"5UNYDVM","teacher_id":2}
+QUIZ INSERTED: quiz_id=34, class_id=7
+RAW INPUT: {"class_id":1,"class_code":"7TXH4GH","title":"introduction","questions":[{"type":"multiple","text":"i love","correct":"D","choices":["you","me","her","berna"]},{"type":"truefalse","text":"mahusay hi bernadette","correct":"True","choices":null}]}
+EXTRACTED VALUES: class_id=1, class_code=7TXH4GH, teacher_id=7, title=introduction
+DB FETCH CLASS: {"class_code":"7TXH4GH","teacher_id":7}
+ERROR: SQLSTATE[23000]: Integrity constraint violation: 1452 Cannot add or update a child row: a foreign key constraint fails (`quizmaker`.`quizzes`, CONSTRAINT `quizzes_ibfk_2` FOREIGN KEY (`teacher_id`) REFERENCES `users` (`id`) ON DELETE CASCADE)
+RAW INPUT: {"class_id":2,"class_code":"5GZPPAE","title":"quiz 1","questions":[{"type":"multiple","text":"mahusay hi","correct":"A","choices":["bernadette","berna","regir","ms campo"]},{"type":"truefalse","text":"i love bernadette","correct":"True","choices":null}]}
+EXTRACTED VALUES: class_id=2, class_code=5GZPPAE, teacher_id=2, title=quiz 1
+DB FETCH CLASS: {"class_code":"5GZPPAE","teacher_id":2}
+QUIZ INSERTED: quiz_id=20, class_id=2
+RAW INPUT: {"class_id":4,"class_code":"BXCRVJV","title":"math","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]},{"type":"identification","text":"1","correct":"1","choices":null},{"type":"truefalse","text":"1","correct":"True","choices":null}]}
+EXTRACTED VALUES: class_id=4, class_code=BXCRVJV, teacher_id=11, title=math
+DB FETCH CLASS: {"class_code":"BXCRVJV","teacher_id":11}
+QUIZ INSERTED: quiz_id=21, class_id=4
+RAW INPUT: {"class_id":4,"class_code":"BXCRVJV","title":"science","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=4, class_code=BXCRVJV, teacher_id=11, title=science
+DB FETCH CLASS: {"class_code":"BXCRVJV","teacher_id":11}
+QUIZ INSERTED: quiz_id=22, class_id=4
+RAW INPUT: {"class_id":5,"class_code":"YQVMPNY","title":"math","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]},{"type":"identification","text":"1","correct":"1","choices":null}]}
+EXTRACTED VALUES: class_id=5, class_code=YQVMPNY, teacher_id=11, title=math
+DB FETCH CLASS: {"class_code":"YQVMPNY","teacher_id":11}
+QUIZ INSERTED: quiz_id=23, class_id=5
+RAW INPUT: {"class_id":5,"class_code":"YQVMPNY","title":"science","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=5, class_code=YQVMPNY, teacher_id=11, title=science
+DB FETCH CLASS: {"class_code":"YQVMPNY","teacher_id":11}
+QUIZ INSERTED: quiz_id=24, class_id=5
+RAW INPUT: {"class_id":6,"class_code":"7F9XHF6","title":"english","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]},{"type":"identification","text":"re","correct":"re","choices":null}]}
+EXTRACTED VALUES: class_id=6, class_code=7F9XHF6, teacher_id=11, title=english
+DB FETCH CLASS: {"class_code":"7F9XHF6","teacher_id":11}
+QUIZ INSERTED: quiz_id=25, class_id=6
+RAW INPUT: {"class_id":6,"class_code":"7F9XHF6","title":"math2","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]},{"type":"identification","text":"re","correct":"re","choices":null}]}
+EXTRACTED VALUES: class_id=6, class_code=7F9XHF6, teacher_id=11, title=math2
+DB FETCH CLASS: {"class_code":"7F9XHF6","teacher_id":11}
+QUIZ INSERTED: quiz_id=26, class_id=6
+RAW INPUT: {"class_id":7,"class_code":"6YZ3RP6","title":"1","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=7, class_code=6YZ3RP6, teacher_id=11, title=1
+DB FETCH CLASS: {"class_code":"6YZ3RP6","teacher_id":11}
+QUIZ INSERTED: quiz_id=27, class_id=7
+RAW INPUT: {"class_id":7,"class_code":"6YZ3RP6","title":"1","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=7, class_code=6YZ3RP6, teacher_id=11, title=1
+DB FETCH CLASS: {"class_code":"6YZ3RP6","teacher_id":11}
+QUIZ INSERTED: quiz_id=28, class_id=7
+RAW INPUT: {"class_id":7,"class_code":"6YZ3RP6","title":"science","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=7, class_code=6YZ3RP6, teacher_id=11, title=science
+DB FETCH CLASS: {"class_code":"6YZ3RP6","teacher_id":11}
+QUIZ INSERTED: quiz_id=29, class_id=7
+RAW INPUT: {"class_id":7,"class_code":"6YZ3RP6","title":"lol","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=7, class_code=6YZ3RP6, teacher_id=11, title=lol
+DB FETCH CLASS: {"class_code":"6YZ3RP6","teacher_id":11}
+QUIZ INSERTED: quiz_id=30, class_id=7
+RAW INPUT: {"class_id":7,"class_code":"6YZ3RP6","title":"math","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=7, class_code=6YZ3RP6, teacher_id=11, title=math
+DB FETCH CLASS: {"class_code":"6YZ3RP6","teacher_id":11}
+QUIZ INSERTED: quiz_id=31, class_id=7
+RAW INPUT: {"class_id":8,"class_code":"GWT5G6F","title":"1","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=8, class_code=GWT5G6F, teacher_id=11, title=1
+DB FETCH CLASS: {"class_code":"GWT5G6F","teacher_id":11}
+QUIZ INSERTED: quiz_id=32, class_id=8
+RAW INPUT: {"class_id":8,"class_code":"GWT5G6F","title":"1","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=8, class_code=GWT5G6F, teacher_id=11, title=1
+DB FETCH CLASS: {"class_code":"GWT5G6F","teacher_id":11}
+QUIZ INSERTED: quiz_id=33, class_id=8
+RAW INPUT: {"class_id":8,"class_code":"GWT5G6F","title":"math","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","1","2","2"]}]}
+EXTRACTED VALUES: class_id=8, class_code=GWT5G6F, teacher_id=11, title=math
+DB FETCH CLASS: {"class_code":"GWT5G6F","teacher_id":11}
+QUIZ INSERTED: quiz_id=34, class_id=8
+RAW INPUT: {"class_id":9,"class_code":"QCYMQWT","title":"science","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=9, class_code=QCYMQWT, teacher_id=11, title=science
+DB FETCH CLASS: {"class_code":"QCYMQWT","teacher_id":11}
+QUIZ INSERTED: quiz_id=35, class_id=9
+RAW INPUT: {"class_id":9,"class_code":"QCYMQWT","title":"4","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","1","2","3"]}]}
+EXTRACTED VALUES: class_id=9, class_code=QCYMQWT, teacher_id=11, title=4
+DB FETCH CLASS: {"class_code":"QCYMQWT","teacher_id":11}
+QUIZ INSERTED: quiz_id=36, class_id=9
+RAW INPUT: {"class_id":10,"class_code":"VKXW32G","title":"math","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=10, class_code=VKXW32G, teacher_id=11, title=math
+DB FETCH CLASS: {"class_code":"VKXW32G","teacher_id":11}
+QUIZ INSERTED: quiz_id=37, class_id=10
+RAW INPUT: {"class_id":10,"class_code":"VKXW32G","title":"science","questions":[{"type":"multiple","text":"1","correct":"A","choices":["1","2","3","4"]}]}
+EXTRACTED VALUES: class_id=10, class_code=VKXW32G, teacher_id=11, title=science
+DB FETCH CLASS: {"class_code":"VKXW32G","teacher_id":11}
+QUIZ INSERTED: quiz_id=38, class_id=10
