@@ -1,0 +1,104 @@
+#background-canvas { 
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:-1; 
+}
+
+body {
+    margin: 0;  
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6D28D9, #F472B6);
+    background-attachment: fixed;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+/* main card */
+.leaderboard-card {
+    background: #6D28D9;
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* table */
+
+.leaderboard-card {
+    background: #6D28D9; /* dark purple card */
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse; /* ensures borders render correctly */
+}
+
+.leaderboard-table thead th {
+    color: #ffffff; /* white text for header */
+    font-weight: 600;
+    border-bottom: 2px solid rgba(255,255,255,0.6); /* visible line */
+    padding: 8px 12px;
+    text-align: left;
+    background-color: rgba(0,0,0,0.2); /* optional darker header background */
+}
+
+.leaderboard-table tbody td {
+    color: #ffffff; /* white text for table body */
+    border-bottom: 1px solid rgba(255,255,255,0.3); /* visible lines */
+    padding: 8px 12px;
+    background-color: transparent; /* inherit card background */
+}
+
+.leaderboard-card .card-body small.text-muted {
+    color: #ffffff !important;
+}
+
+.leaderboard-card .card-title {
+    font-family: 'Times New Roman', Times, serif; 
+    font-size: 50px;  /* optional: adjust size */
+    font-weight: 700;   /* optional: make bold */
+    color: white;
+}
+
+/* alternating rows */
+.table-row-even {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.00));
+}
+
+/* rank circle */
+.rank-circle {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+}
+
+/* medals */
+.medal { font-size: 18px; margin-left: 6px; }
+.medal.gold { filter: drop-shadow(0 2px 6px rgba(255, 215, 0, 0.15)); }
+.medal.silver { filter: drop-shadow(0 2px 6px rgba(192, 192, 192, 0.12)); }
+.medal.bronze { filter: drop-shadow(0 2px 6px rgba(205, 127, 50, 0.12)); }
+
+/* small responsive tweaks */
+@media (max-width: 720px) {
+    .leaderboard-card { padding: 12px; }
+    .leaderboard-table thead th:nth-child(4), .leaderboard-table td:nth-child(4) {
+        display: none; /* hide total score column on very small screens */
+    }
+}
+
+.btn {
+    background-color: #6D28D9;
+    color: white;
+}

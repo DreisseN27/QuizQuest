@@ -1,0 +1,21 @@
+.leaderboard-card {
+    background: linear-gradient(135deg, #16a34a, #15803d); /* green gradient */
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.leaderboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+}
+
+.class-code-badge {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+/* Adjust header spacing */
+.greeting {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
